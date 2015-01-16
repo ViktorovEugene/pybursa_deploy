@@ -1,0 +1,47 @@
+{% extends "courses/courses_base.html" %}
+{% load static %}
+
+{% block css %}{{ STATIC_URL }}courses/css/courses_list.css{% endblock %}
+
+{% block content %}
+  <div class="container">
+      <h1>IT Bursa course list</h1>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Название</th>
+            <th>Дата начала</th>
+            <th>Дата окончания</th>
+            <th>
+              <a  href="{% url 'courses_new' %}">
+                <button class="btn btn-success" type="button">add coach</button></a>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for course in courses %}
+          <tr>
+            <td>{{ course.id }}</td>
+            <td>
+                <a href="{% url 'courses_item' course.id %}">
+                  {{ course.name }}
+              </a>
+            </td>
+            <td>{{ course.start_date }}</td>
+            <td>{{ course.end_date }}</td>
+            <td>
+              <div class="btn-group">
+                <a  href="{% url 'courses_edit' course.id %}">
+                  <button class="btn btn-warning" type="button">edit</button></a>
+                <a  href="{% url 'courses_delete' course.id %}">
+                  <button class="btn btn-danger" type="button">delete</button></a>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+  </div>
+{% endblock content %}          
+

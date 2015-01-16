@@ -1,0 +1,18 @@
+{% extends "courses/courses_base.html" %}
+{% load static %}
+
+{% block css %}{{ STATIC_URL }}courses/css/course_confirm_delete.css{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>{{ title }}</h1>
+        <form action="" method="post">{% csrf_token %}
+          <h3>Are you sure you want to delete {{ object.name }}
+            {{ object.id }}</h3>
+          <div class="btn-group" role="group" aria-label="...">
+            <input type='submit' class='btn btn-danger' value="delete"/>
+            <a href="{% url 'courses_list' %}" class="btn btn-default">cancel</a>
+          </div>
+        </form>
+    </div>
+{% endblock content %}

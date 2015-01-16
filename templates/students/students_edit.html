@@ -1,0 +1,19 @@
+{% extends "students/students_base.html" %}
+{% load static %}
+
+{% block css %}{{ STATIC_URL }}students/css/students_edit.css{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>{{ title }}</h1>
+        <form method="post">
+          {% csrf_token %}
+            {{ form.as_p }}
+          <div class="btn-group" role="group" aria-label="...">
+            <input type='submit' class='btn btn-success' value="save"/>
+            <a href=""<button type="button" class="btn btn-info">clean</button></a>
+            <a href="{% url 'students_list' %}" class="btn btn-default">cancel</a>
+          </div>
+        </form>
+    </div>
+{% endblock content %}

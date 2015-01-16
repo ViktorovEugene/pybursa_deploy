@@ -1,0 +1,21 @@
+{% extends "coaches/coaches_base.html" %}
+{% load static %}
+
+{% block css %}{{ STATIC_URL }}coaches/css/coaches_edit.css{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>{{ title }}</h1>
+        <form method="post">
+          {% csrf_token %}
+          <ul class="list-group">
+            {{ form.as_ul }}
+          </ul>
+          <div class="btn-group" role="group" aria-label="...">
+            <input type='submit' class='btn btn-success' value="save"/>
+            <a href=""<button type="button" class="btn btn-info">clean</button></a>
+            <a href="{% url 'coaches_list' %}" class="btn btn-default">cancel</a>
+          </div>
+        </form>
+    </div>
+{% endblock content %}

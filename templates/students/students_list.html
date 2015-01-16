@@ -1,0 +1,31 @@
+{% extends "students/students_base.html" %}
+{% load static %}
+
+{% block css %}{{ STATIC_URL }}students/css/students_list.css{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>IT Bursa students list</h1>
+        <a  href="{% url 'students_new' %}">
+          <button class="btn btn-success" type="button">add student</button></a>
+        <p></p>
+        <ul class="list-group">
+            {% for student in students %}
+            <li class="list-group-item" style="font-size: 18px">
+                <a href="{% url 'students_item' student.id %}">
+                    {{ student.surname }} {{ student.name }} 
+                    {{ student.pk }}
+                </a>
+                <div class="btn-group pull-right">
+                  <a  href="{% url 'students_edit' student.id %}">
+                    <button class="btn btn-warning  " type="button">edit</button></a>
+                  <a  href="{% url 'students_delete' student.id %}">
+                    <button class="btn btn-danger" type="button">delete</button></a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock content %}
+
+

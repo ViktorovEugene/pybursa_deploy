@@ -1,0 +1,26 @@
+{% extends "courses/courses_base.html" %}
+{% load static %}
+
+{% block css %}{{ STATIC_URL }}courses/css/courses_edit.css{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <h1>{{ title }}</h1>
+        <form method="post">
+          {% csrf_token %}
+          <ul class="list-group">
+            {% for boundfield in form %}
+              <li class="list-group-item">{{ boundfield.name }} {{ boundfield }}</li>
+              <!-- тут у меня не получилось вывести имена полей, буду благодарен
+              ели подскажете, как это сделать правильно -->
+            {% endfor %}
+          </ul>
+          <div class="btn-group" role="group" aria-label="...">
+            <input type='submit' class='btn btn-success' value="save"/>
+            <a href=""<button type="button" class="btn btn-info">clean</button></a>
+            <a href="{% url 'courses_list' %}" class="btn btn-default">cancel</a>
+          </div>
+        </form>
+    </div>
+{% endblock content %}

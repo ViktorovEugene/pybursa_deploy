@@ -1,0 +1,25 @@
+{% extends "students/students_base.html" %}
+{% load static %}
+
+{% block css %}{{ STATIC_URL }}students/css/students_item.css{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+      <h1>Student: {{ student.surname }} {{ student.name }}</h1>
+      <ul class="list-group">
+        <li class="list-group-item">Email: {{ student.email }}</li>
+        <li class="list-group-item">Телефон: {{ student.phone }}</li>
+        <li class="list-group-item">Пакет: {{ student.package }}</li>
+        <li class="list-group-item">PK: {{ student.pk }}</li>
+      </ul>
+	  <div class="btn-group pull-right">
+		  <a  href="{% url 'students_new' %}">
+          <button class="btn btn-success" type="button">add student</button></a>
+		  <a  href="{% url 'students_edit' student.id %}">
+		    <button class="btn btn-warning  " type="button">edit</button></a>
+		  <a  href="{% url 'students_delete' student.id %}">
+		    <button class="btn btn-danger" type="button">delete</button></a>
+	  </div>
+    </div>
+{% endblock content %}

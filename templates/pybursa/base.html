@@ -1,0 +1,174 @@
+{% load static %}<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <!--
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> -->
+    <meta charset="utf-8">
+
+    <title>IT Bursa</title>
+    
+    <!-- Bootstrap core CSS -->
+    <link href="{% static "dist/css/bootstrap.min.css" %}" rel="stylesheet">
+    
+    <!-- Custom styles for common template -->
+    <link href="{% static "pybursa/css/common.css" %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href=
+      "{% block css %}{% static "pybursa/css/base.css" %}{% endblock css %}"
+    rel="stylesheet">
+    
+  </head>
+  
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">IT Bursa</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li {% block class-active-students %}{% endblock %}><a href="{% url 'students_list' %}">Students</a></li>
+            <li {% block class-active-courses %}{% endblock %}><a href="{% url 'courses_list' %}">Courses</a></li>
+            <li {% block class-active-coaches %}{% endblock %}><a href="{% url 'coaches_list' %}">Coaches</a></li>
+            <li {% block class-active-address %}{% endblock %}><a href="{% url 'address_list' %}">Address</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav><!--/.navbar -->
+    
+  {% block content %}
+    
+    <!-- Carousel  ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img src="{% static 'pybursa/img/ruby.jpg' %}" alt="First slide">
+          <div class="container">
+            <div class="carousel-caption">
+                <h1 class="ruby-h1">Ruby on Rails</h1>
+              <p class="ruby-p"><b>Ruby on Rails</b> — это прорыв в снижении входного барьера в программировании. 
+Мощные веб-приложения, которые раньше разрабатывались за недели или месяцы, теперь могут быть сделаны за считанные дни.</p>
+              <p><a class="btn btn-lg btn-primary" href="http://rubybursa.com/" role="button">Уже хочу!</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="{% static 'pybursa/img/python.png' %}" alt="Second slide">
+          <div class="container">
+            <div class="carousel-caption">
+                <h1 class="python-h1">Python | Все гениальное - просто!</h1>
+                <p class="python-p">Легкий и мощный язык. Идеально подходит для Web-разработки.</p>
+                <p><a class="btn btn-lg btn-primary" href="http://pybursa.com" role="button">Записпться сейчас</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="{% static 'pybursa/img/java_wall.png' %}" alt="Third slide">
+          <div class="container">
+            <div class="carousel-caption">
+                <h1 class="java-h1">Душа компании</h1>
+                <p class="java-p">Мощный классический язык программирвания, без которого плого будет всем)</p>
+                <p><a class="btn btn-lg btn-primary" href="http://jsbursa.com" role="button">Научиться</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div><!-- /.carousel -->
+
+    
+     <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <div class="container">  
+      <div class="blog-header">
+        <h1 class="blog-title">Приветвую тебя, дорогой гость!</h1>
+        <p class="lead blog-description">Этот сайт прекрасная иллустрация того, чему может научитсья даже <b>самый ленивый</b> студент курсов <a href="https://www.facebook.com/pages/It-Bursa/1539330322946469?ref=stream&fref=nf">IT Bursa!</a></p>
+      </div>
+      <!-- content -->
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+          <div class="blog-post">
+            <h2 class="blog-post-title">Обо мне</h2>
+            <p class="blog-post-meta">
+              "Я бывший бармен крупног ресторана, и мне пришлось уйти с работы и болше я не могу..."
+            </p>
+            <p>
+              Так могла бы начинаться моя речь на собрании анонимных алкоголиков. Как обычно, к внезапному увольнению сложно быть подготовленным. Нужно было-бы подкопить денег, подыскать альтернативу... Я этим не обременялся и, словно в сказеке, стал перед выбором:
+            </p>
+            <blockquote>
+              -Прямо пойдешь - водки нальёшь. <br>-На лево пойдешь... - А вот не пойду, нет ни денег, ни даже девушки, от коророй было-бы можно.<br>-Ну тогда тебе направо! 
+            </blockquote>
+            <p>
+              Знакомая по университету предложила пойти на курсы. Тут-то я и свпомнил все советы товарища, подогретые легендами о достойных заработках программиста.
+            </p>
+            <hr>
+            <p>
+              И так, что мы имеем - я прежде полный ноль в программировании - пишу свой сайт, спустья всего два месяца. Выводы делайте сами)
+            </p>
+          </div>
+          <!-- /.blog-post -->
+        </div>
+        <!-- /.blog-main -->
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>Что есть на сайте:</h4>
+            <p>
+              Сайт иммитирует ресурс курсов по программированию. Здесь вы можете добавлять удалять и реддактировать курсы группы и конечно-же студентов.
+            </p>
+          </div>
+          <!-- /.sidebar-module-inset -->
+        </div>
+        <!-- /.blog-sidebar -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /container -->
+  
+  {% endblock content %}
+    
+    <footer class="blog-footer">
+      <p>
+        &copy; Created by <b>Viktorov Eugeny</b> <a href="https://vk.com/jeka_from_ua">@jeka_from_ua</a><b> · </b><em>Kharkov 2015</em>
+      </p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="{% static "js/jquery.min.js" %}" ></script>
+  <script src="{% static "dist/js/bootstrap.min.js" %}" ></script>
+  <script>
+      $('.carousel').carousel({
+          interval: false
+      })
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% extends "courses/courses_base.html" %}
+{% load static %}
+
+{% block css %}{{ STATIC_URL }}courses/css/courses_item.css{% endblock %}
+
+{% block content %}
+    <div class="container">
+      <h1>Course: {{ course.course_name }}</h1>
+      <ul class="list-group">
+        <li class="list-group-item">Язык программирования: {{ course.tecnology }}</li>
+        <li class="list-group-item">Начало: {{ course.start_date }}</li>
+        <li class="list-group-item">Конец: {{ course.end_date }}</li>
+        <li class="list-group-item">Преподаватель: {{ course.coach }}</li>
+        <li class="list-group-item">Ассистент: {{ course.assistant }}</li>
+        <li class="list-group-item">Описание: <br> {{ course.description }}</li>
+      </ul>
+    </div>
+    <div class="btn-group pull-right">
+      <a  href="{% url 'courses_edit' course.id %}">
+        <button class="btn btn-warning  " type="button">edit</button></a>
+      <a  href="{% url 'courses_delete' course.id %}">
+        <button class="btn btn-danger" type="button">delete</button></a>
+      <a  href="{% url 'courses_new' %}">
+          <button class="btn btn-success" type="button">new course</button></a>
+    </div>
+{% endblock content %}

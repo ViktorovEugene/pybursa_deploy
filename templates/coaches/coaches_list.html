@@ -1,0 +1,29 @@
+{% extends "coaches/coaches_base.html" %}
+{% load static %}
+
+{% block css %}{{ STATIC_URL }}coaches/css/coaches_list.css{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>IT Bursa coaches list</h1>
+        <a  href="{% url 'coaches_new' %}">
+          <button class="btn btn-success" type="button">add course</button></a>
+        <p></p>
+        <ul class="list-group">
+            {% for coach in coaches %}
+            <li  class="list-group-item" style="font-size: 18px">
+                {{coach.id}}
+                <a href="{% url 'coaches_item' coach.id %}">
+                  {{ coach.surname }} {{ coach.name }}</a>
+
+                <div class="btn-group pull-right">
+                  <a  href="{% url 'coaches_edit' coach.id %}">
+                    <button class="btn btn-warning  " type="button">edit</button></a>
+                  <a  href="{% url 'coaches_delete' coach.id %}">
+                    <button class="btn btn-danger" type="button">delete</button></a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock content %}
