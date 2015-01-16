@@ -101,11 +101,11 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_DIR, '../templates'),
     # here you can add another templates directory if you wish.
 )
-STATIC_ROOT = '../staticfiles'
-STATIC_URL = '../staticfiles/'
+STATIC_ROOT = 'staticfiles'
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, '../static'),
+    os.path.join(BASE_DIR, 'static'),
 )
 
 # Simplified static file serving.
