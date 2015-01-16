@@ -102,7 +102,7 @@ TEMPLATE_DIRS = (
     # here you can add another templates directory if you wish.
 )
 STATIC_ROOT = '../staticfiles'
-STATIC_URL = '../staticfiles'
+STATIC_URL = '../staticfiles/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, '../static'),
