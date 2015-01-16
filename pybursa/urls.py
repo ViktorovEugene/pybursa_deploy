@@ -11,5 +11,4 @@ urlpatterns = patterns('',
     url(r'^coaches/', include('coaches.urls'), name='coaches'),
     url(r'^address/', include('address.urls'), name='address'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^contact/$', DelationView.as_view(), name='delation' ),
 )
