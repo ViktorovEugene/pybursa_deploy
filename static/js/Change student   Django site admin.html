@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)http://127.0.0.1:8000/admin/students/student/3/ -->
+<html lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Change student | Django site admin</title>
+<link rel="stylesheet" type="text/css" href="./Change student   Django site admin_files/base.css">
+<link rel="stylesheet" type="text/css" href="./Change student   Django site admin_files/forms.css">
+<!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="/static/admin/css/ie.css" /><![endif]-->
+
+<script type="text/javascript">window.__admin_media_prefix__ = "/static/admin/";</script>
+<script type="text/javascript">window.__admin_utc_offset__ = "0";</script>
+
+<script type="text/javascript" src="./Change student   Django site admin_files/saved_resource"></script>
+<script type="text/javascript" src="./Change student   Django site admin_files/core.js"></script>
+<script type="text/javascript" src="./Change student   Django site admin_files/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="./Change student   Django site admin_files/jquery.js"></script>
+<script type="text/javascript" src="./Change student   Django site admin_files/jquery.init.js"></script>
+<script type="text/javascript" src="./Change student   Django site admin_files/actions.js"></script>
+
+<meta name="robots" content="NONE,NOARCHIVE">
+</head>
+
+
+<body class=" app-students model-student change-form">
+
+<!-- Container -->
+<div id="container">
+
+    
+    <!-- Header -->
+    <div id="header">
+        <div id="branding">
+        
+<h1 id="site-name"><a href="http://127.0.0.1:8000/admin/">Django administration</a></h1>
+
+        </div>
+        
+        <div id="user-tools">
+            
+                Welcome,
+                <strong>admin</strong>.
+            
+            
+                
+                
+                
+                <a href="http://127.0.0.1:8000/admin/password_change/">Change password</a> /
+                
+                <a href="http://127.0.0.1:8000/admin/logout/">Log out</a>
+            
+        </div>
+        
+        
+    </div>
+    <!-- END Header -->
+    
+<div class="breadcrumbs">
+<a href="http://127.0.0.1:8000/admin/">Home</a>
+› <a href="http://127.0.0.1:8000/admin/students/">Students</a>
+› <a href="http://127.0.0.1:8000/admin/students/student/">Students</a>
+› Шариков Полиграф
+</div>
+
+    
+
+    
+        
+    
+
+    <!-- Content -->
+    <div id="content" class="colM">
+        
+        <h1>Change student</h1>
+        <div id="content-main">
+
+
+  <ul class="object-tools">
+    
+    <li>
+        
+        <a href="http://127.0.0.1:8000/admin/students/student/3/history/" class="historylink">History</a>
+    </li>
+    
+    
+  </ul>
+
+
+<form enctype="multipart/form-data" action="" method="post" id="student_form" novalidate=""><input type="hidden" name="csrfmiddlewaretoken" value="Z3bPz9mTymMFcg13I52doM7NiE0SWnKS">
+<div>
+
+
+
+
+
+
+
+  <fieldset class="module aligned ">
+    
+    
+    
+        <div class="form-row field-name">
+            
+            
+                <div>
+                    
+                    
+                        <label class="required" for="id_name">Name:</label>
+                        
+                            <input class="vTextField" id="id_name" maxlength="225" name="name" type="text" value="Полиграф">
+                        
+                    
+                    
+                </div>
+            
+        </div>
+    
+        <div class="form-row field-surname">
+            
+            
+                <div>
+                    
+                    
+                        <label class="required" for="id_surname">Surname:</label>
+                        
+                            <input class="vTextField" id="id_surname" maxlength="225" name="surname" type="text" value="Шариков">
+                        
+                    
+                    
+                </div>
+            
+        </div>
+    
+        <div class="form-row field-email">
+            
+            
+                <div>
+                    
+                    
+                        <label class="required" for="id_email">Email:</label>
+                        
+                            <input class="vTextField" id="id_email" maxlength="75" name="email" type="email" value="poll@gmail.com">
+                        
+                    
+                    
+                </div>
+            
+        </div>
+    
+        <div class="form-row field-phone">
+            
+            
+                <div>
+                    
+                    
+                        <label for="id_phone">Phone:</label>
+                        
+                            <input class="vTextField" id="id_phone" maxlength="15" name="phone" type="text">
+                        
+                    
+                    
+                </div>
+            
+        </div>
+    
+        <div class="form-row field-courses">
+            
+            
+                <div>
+                    
+                    
+                        <label for="id_courses">Courses:</label>
+                        
+                            <select multiple="multiple" id="id_courses" name="courses">
+<option value="1">PyBursa (Радченко Алексей (C)) - p</option>
+<option value="2">Ruby on Rails (Душенковская Оксана (C)) - r</option>
+<option value="3" selected="selected">JavaScript (Викторов Алексей (C)) - j</option>
+</select><a href="http://127.0.0.1:8000/admin/courses/course/add/?_to_field=id" class="add-another" id="add_id_courses" onclick="return showAddAnotherPopup(this);"> <img src="./Change student   Django site admin_files/icon_addlink.gif" width="10" height="10" alt="Add Another"></a>
+                        
+                    
+                    
+                        <p class="help"> Hold down "Control", or "Command" on a Mac, to select more than one.</p>
+                    
+                </div>
+            
+        </div>
+    
+        <div class="form-row field-package">
+            
+            
+                <div>
+                    
+                    
+                        <label class="required" for="id_package">Package:</label>
+                        
+                            <select id="id_package" name="package">
+<option value="s">Standart</option>
+<option value="g">Glod</option>
+<option value="p" selected="selected">Platinum</option>
+</select>
+                        
+                    
+                    
+                </div>
+            
+        </div>
+    
+</fieldset>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="submit-row">
+<input type="submit" value="Save" class="default" name="_save">
+
+    
+    <p class="deletelink-box"><a href="http://127.0.0.1:8000/admin/students/student/3/delete/" class="deletelink">Delete</a></p>
+
+
+<input type="submit" value="Save and add another" name="_addanother">
+<input type="submit" value="Save and continue editing" name="_continue">
+</div>
+
+
+
+
+
+
+<script type="text/javascript">
+(function($) {
+    var field;
+
+
+})(django.jQuery);
+</script>
+
+
+</div>
+</form></div>
+
+        
+        <br class="clear">
+    </div>
+    <!-- END Content -->
+
+    <div id="footer"></div>
+</div>
+<!-- END Container -->
+
+
+
+</body></html>

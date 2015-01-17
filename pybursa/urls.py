@@ -1,3 +1,8 @@
+from django.conf import settings
+from django.conf.urls.static import static
+
+
+ + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 from django.views.generic import TemplateView
 
 from django.conf.urls import patterns, include, url
@@ -11,4 +16,4 @@ urlpatterns = patterns('',
     url(r'^coaches/', include('coaches.urls'), name='coaches'),
     url(r'^address/', include('address.urls'), name='address'),
     url(r'^admin/', include(admin.site.urls)),
-)
+) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

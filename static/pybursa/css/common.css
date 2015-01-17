@@ -1,0 +1,28 @@
+html {
+	height: 100%;
+	padding-bottom: 86px;
+}
+body {
+	height: 100%;
+	padding-top: 50px; 
+}
+body > .container {
+	min-height: 100%;
+}
+nav .container {
+	position: inherit;
+}
+
+/*
+ * Footer
+ */
+
+.blog-footer {
+  vertical-align: middle;
+  padding-top: 20px;
+  color: #424141;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-top: 1px solid #e5e5e5;
+  padding-bottom: 5px;
+}
