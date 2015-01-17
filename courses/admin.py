@@ -20,11 +20,9 @@ class CourseAdmin(admin.ModelAdmin):
     fieldsets = [
             (None, {'fields': ['name', 'tecnology', 'slug',
                                'start_date', 'end_date',
-                               'venue',]}),
-            ('Teachers', {'fields': ['coach', 'assistant'],
+                               'venue', 'coach', 'description']}),
+            ('Teachers', {'fields': ['assistant'],
                           'classes': ['collapse']}),
-            ('Description', {'fields': ['description'],
-                            'classes': ['collapse']}),
     ]
     formfield_overrides = {
         models.DateField: {'widget': SelectDateWidget},

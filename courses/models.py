@@ -16,7 +16,7 @@ class Course(models.Model):
     end_date = models.DateField()
     tecnology = models.CharField(max_length=11, choices=TECNOLOGY_CHOISE)
     venue = models.ForeignKey('address.Address', related_name='course_venue')
-    slug = models.SlugField()
+    slug = models.SlugField(blank=True)
 
     def get_absolute_url(self):
         return "/courses/%i/" % self.id

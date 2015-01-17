@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('start_date', models.DateField()),
                 ('end_date', models.DateField()),
                 ('tecnology', models.CharField(max_length=11, choices=[(b'python', b'Python'), (b'rubby', b'Ruby'), (b'javascript', b'JavaScript')])),
-                ('slug', models.SlugField()),
+                ('slug', models.SlugField(blank=True)),
                 ('assistant', models.ForeignKey(related_name='course_assistant', blank=True, to='coaches.Coach', null=True)),
                 ('coach', models.ForeignKey(to='coaches.Coach')),
                 ('venue', models.ForeignKey(related_name='course_venue', to='address.Address')),

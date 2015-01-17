@@ -28,11 +28,11 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=225)),
                 ('surname', models.CharField(max_length=225)),
                 ('date_of_birth', models.DateField(null=True, blank=True)),
-                ('email', models.EmailField(max_length=75)),
+                ('email', models.EmailField(default=b'example@mail.com', max_length=75)),
                 ('phone', models.CharField(max_length=15, blank=True)),
                 ('package', models.CharField(default=b'standart', max_length=8, choices=[(b'standart', b'Standart'), (b'gold', b'Glod'), (b'platimun', b'Platinum')])),
                 ('courses', models.ManyToManyField(to='courses.Course')),
-                ('group', models.ForeignKey(related_name='students', default=b'', to='students.Group')),
+                ('group', models.ForeignKey(related_name='students', default=b'', blank=True, to='students.Group')),
             ],
             options={
             },

@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=225)),
                 ('surname', models.CharField(max_length=225)),
                 ('email', models.EmailField(default=b'example@gmail.com', max_length=75)),
-                ('status', models.CharField(max_length=9, choices=[(b'coach', b'Coach'), (b'assistatn', b'Assistant')])),
+                ('status', models.CharField(max_length=9, choices=[(b'coach', b'Coach'), (b'assistant', b'Assistant')])),
                 ('phone_number', models.CharField(default=b'+38000000000', max_length=15)),
                 ('user', models.ForeignKey(default=b'', blank=True, to=settings.AUTH_USER_MODEL)),
             ],

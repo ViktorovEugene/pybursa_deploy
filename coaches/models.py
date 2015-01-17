@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class Coach(models.Model):
     COACH_TYPES = (
         ('coach', 'Coach'),
-        ('assistatn', 'Assistant'),
+        ('assistant', 'Assistant'),
     )
     name = models.CharField(max_length=225)
     surname = models.CharField(max_length=225)
