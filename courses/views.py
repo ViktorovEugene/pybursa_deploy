@@ -17,6 +17,13 @@ class CoursesDetailView(DetailView):
 	model = Course
 	template_name = 'courses/courses_item.html'
 	context_object_name = 'course'
+	def get_context_data(self, **kwargs):
+  		context = super(CoursesDetailView, self).get_context_data(**kwargs)
+  		# context['course'] = u'; '.join(self.get_object().course_venue.values_list('name', 
+    	#                                                     flat=True))
+		# print self.get_object()
+		# print context['course'].student_set.all()[0].name
+  		return context
 
 
 class CoursesCreateView(CreateView):

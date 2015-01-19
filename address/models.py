@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from django.db import models
-# from courses.models import Course
 
 class Address(models.Model):
     DISTRICT_LIST=(
@@ -25,9 +24,14 @@ class Address(models.Model):
     district = models.CharField(max_length=30, choices=DISTRICT_LIST,
                                 default=u'Киевский'
     )
-    street = models.CharField(max_length=30, default=u'Бейкер-стрит'),
+    street = models.CharField(max_length=30, default=u'Бейкер-стрит')
     house = models.CharField(max_length=30, default='221-b')
-
+    new_field = models.CharField(max_length=50, blank=True)
+    
+    def __init__(self, *args, **kwargs):
+        super(Address, self).__init__(*args, **kwargs)
+        self.new_field = (self.street + self.house)
+    
     def get_absolute_url(self):
         return "/address/%i/" % self.id
 

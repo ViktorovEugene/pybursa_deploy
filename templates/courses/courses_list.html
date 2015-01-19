@@ -5,43 +5,51 @@
 
 {% block content %}
   <div class="container">
-      <h1>IT Bursa course list</h1>
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Название</th>
-            <th>Дата начала</th>
-            <th>Дата окончания</th>
-            <th>
-              <a  href="{% url 'courses_new' %}">
-                <button class="btn btn-success" type="button">add course</button></a>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for course in courses %}
-          <tr>
-            <td>{{ course.id }}</td>
-            <td>
-                <a href="{% url 'courses_item' course.id %}">
-                  {{ course.name }}
-              </a>
-            </td>
-            <td>{{ course.start_date }}</td>
-            <td>{{ course.end_date }}</td>
-            <td>
-              <div class="btn-group">
-                <a  href="{% url 'courses_edit' course.id %}">
-                  <button class="btn btn-warning" type="button">edit</button></a>
-                <a  href="{% url 'courses_delete' course.id %}">
-                  <button class="btn btn-danger" type="button">delete</button></a>
-              </div>
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-  </div>
-{% endblock content %}          
 
+    <div class="container marketing">
+      <div class="row row-offcanvas row-offcanvas-right">
+        <div class="col-xs-12 col-sm-9">
+          <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Меню курсов</button>
+          </p>
+          <div class="jumbotron">
+            <h1>Курсы!</h1>
+            <p>Это иммитация списка курсов компинии IT Bursa. Их можно просмотреть, отредактировать, создать, и конечно удалить. Обязательно попробуйте сделать это сами.
+          </div>
+          <div class="row">
+            {% for course in courses %}
+              <div class="col-xs-6 col-lg-4">
+                <a href="{% url 'courses_item' course.id %}">
+                  <img class="img-rounded" src="{{ STATIC_URL }}img/{{ course.get_img }}" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+                  <h2>{{ course.name }}</h2>
+                </a>
+                  <div class="btn-group">
+                    <a  href="{% url 'courses_edit' course.id %}">
+                      <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                      <span style="color: green;">EDIT</span>
+                    <a  href="{% url 'courses_delete' course.id %}">
+                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                  </div>
+                <p>{{ course.description|truncatewords_html:6 }}</p>
+              </div><!--/.col-xs-6.col-lg-4-->
+            {% endfor %}
+          </div><!--/row-->
+        </div><!--/.col-xs-12.col-sm-9-->
+
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+          <div class="blog-sidebar sidebar-module sidebar-module-inset">
+            <h4>И что нам с этим делать?</h4>
+            <p>
+              <br>После создания курса для него можно создавать группы по срокам обудечения и зачислять туда студентов.</p>
+            </p>
+          </div>
+          <div class="list-group">
+            <a href="{% url 'courses_new' %}" class="list-group-item">Создать курс</a>
+          </div>
+        </div>
+      </div><!-- /.row -->
+    </div>
+  </div>
+{% endblock content %}
+    
+{% block js %}<script src="{{ STATIC_URL }}js/offcanvas.js"></script>{% endblock %}

@@ -4,23 +4,85 @@
 {% block css %}{{ STATIC_URL }}courses/css/courses_item.css{% endblock %}
 
 {% block content %}
-    <div class="container">
-      <h1>Course: {{ course.course_name }}</h1>
-      <ul class="list-group">
-        <li class="list-group-item">Язык программирования: {{ course.tecnology }}</li>
-        <li class="list-group-item">Начало: {{ course.start_date }}</li>
-        <li class="list-group-item">Конец: {{ course.end_date }}</li>
-        <li class="list-group-item">Преподаватель: {{ course.coach }}</li>
-        <li class="list-group-item">Ассистент: {{ course.assistant }}</li>
-        <li class="list-group-item">Описание: <br> {{ course.description }}</li>
-      </ul>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="{% url 'courses_list' %}">Все курсы<span class="sr-only">(current)</span></a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><b>Текущий:</b></li>
+            <li><a href="{% url 'courses_edit' course.id %}">Редактирвоать</a></li>
+            <li><a href="{% url 'courses_delete' course.id %}">Удалить</a></li>
+            <li><a href="{% url 'courses_new' %}">Создать новый</a></li>
+          </ul>
+          </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">{{ course.name }}</h1>
+
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="{{ STATIC_URL }}img/page_{{ course.tecnology }}.png" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Технология</h4>
+              <span class="text-muted">{{ course.tecnology }}</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="{{ STATIC_URL }}img/2month.png" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Обучение - два месяца!</h4>
+              <span class="text-muted">Мы все проверили! Это реально. Нечего сисю мять :)</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="{{ STATIC_URL }}img/master.png" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>{{ course.coach.name }}
+                {{ course.coach.surname }}</h4>
+              <span class="text-muted">Преподаватель</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="{{ STATIC_URL }}img/assistant.png" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>{{ course.assistant.name|default:'R2D2' }}
+                {{ course.assistant.surname }}</h4>
+              <span class="text-muted">Ассистент</span>
+            </div>
+          </div>
+          <div class="row placeholders">
+            <h2 class="sub-header">Описание курсов:</h2>
+            <p class="sub-header" id='descr'>{{ course.description }}</p>
+          </div>
+        {% if course.student_set.all|length >= 1 %}
+          <h3 class="sub-header">Список трудящихся студентов</h3>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Группа</th>
+                  <th>Фамилия</th>
+                  <th>Имя</th>
+                  <th>Пакет</th>
+                  <th>Header</th>
+                </tr>
+              </thead>
+              <tbody>
+            {% for student in course.student_set.all %}
+                <tr>
+                  <td>{{ student.group }}</td>
+                  <td>{{ student.surname }}</td>
+                  <td>{{ student.name }}</td>
+                  <td>{{ student.package }}</td>
+                  <td><a href="{{ student.get_absolute_url }}">просмотреть
+                  </td>
+                </tr>
+            {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        {% else %}
+          <h3 class="sub-header">На этом курсе покачто нет студентов.</h3>
+        {% endif %}
+        </div>
+      </div>
     </div>
-    <div class="btn-group pull-right">
-      <a  href="{% url 'courses_edit' course.id %}">
-        <button class="btn btn-warning  " type="button">edit</button></a>
-      <a  href="{% url 'courses_delete' course.id %}">
-        <button class="btn btn-danger" type="button">delete</button></a>
-      <a  href="{% url 'courses_new' %}">
-          <button class="btn btn-success" type="button">new course</button></a>
-    </div>
+
 {% endblock content %}
+{% block js %}
+  <script src="../../assets/js/docs.min.js"></script>
+{% endblock %}

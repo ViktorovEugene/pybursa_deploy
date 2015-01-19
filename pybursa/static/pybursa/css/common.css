@@ -9,8 +9,8 @@ body {
 body > .container {
 	min-height: 100%;
 }
-nav .container {
-	position: inherit;
+nav .my-set {
+	margin-left: 10px;
 }
 
 /*

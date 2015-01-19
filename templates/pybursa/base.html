@@ -24,7 +24,7 @@
   <body>
     <!-- navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
+      <div class="container my-set">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -56,8 +56,8 @@
         <li data-target="#myCarousel" data-slide-to="2"></li>
       </ol>
       <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <img src="{% static 'pybursa/img/ruby.jpg' %}" alt="First slide">
+        <div class="item active ruby">
+          <img clall="ruby-img" src="{% static 'img/ruby label.png' %}" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
                 <h1 class="ruby-h1">Ruby on Rails</h1>
@@ -68,7 +68,7 @@
           </div>
         </div>
         <div class="item">
-          <img src="{% static 'pybursa/img/python.png' %}" alt="Second slide">
+          <img class="py-img" src="{% static 'img/python label.png' %}" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
                 <h1 class="python-h1">Python | Все гениальное - просто!</h1>
@@ -77,12 +77,12 @@
             </div>
           </div>
         </div>
-        <div class="item">
-          <img src="{% static 'pybursa/img/java_wall.png' %}" alt="Third slide">
+        <div class="item java">
+          <img class="java-img" src="{% static 'img/javascript.png' %}" alt="Third slide">
           <div class="container">
             <div class="carousel-caption">
                 <h1 class="java-h1">Душа компании</h1>
-                <p class="java-p">Мощный классический язык программирвания, без которого плого будет всем)</p>
+                <p class="java-p">Мощный классический язык программирования, без которого плохо будет всем)</p>
                 <p><a class="btn btn-lg btn-primary" href="http://jsbursa.com" role="button">курсы</a></p>
             </div>
           </div>
@@ -138,6 +138,7 @@
             <p>
               Сайт иммитирует ресурс курсов по программированию. Здесь вы можете добавлять удалять и реддактировать курсы группы и конечно-же студентов.
             </p>
+            <p style="color: red;">На данный момент это мой первый сайт и он ЕЩЕ находится на страдии разработки. Я прорабатываю логику приложений занимаюсь версткой. Думаю вы поймёте, где я еще "неприбрался". Могут быть даже опечатки :)</p>
           </div>
           <!-- /.sidebar-module-inset -->
         </div>
@@ -164,11 +165,12 @@
   <!-- Placed at the end of the document so the pages load faster -->
   <script src="{% static "dist/js/jquery.min.js" %}" ></script>
   <script src="{% static "dist/js/bootstrap.min.js" %}" ></script>
+  {% block js %}
   <script>
       $('.carousel').carousel({
           interval: false
       })
   </script>
-
+  {% endblock %}
 </body>
 </html>
