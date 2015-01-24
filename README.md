@@ -1,4 +1,4 @@
-# Heroku Django Starter Template
+# Heroku Django Deploy
 
 An utterly fantastic project starter template for Django 1.7.
 
