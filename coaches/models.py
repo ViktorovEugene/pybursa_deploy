@@ -7,6 +7,10 @@ class Coach(models.Model):
         ('coach', 'Coach'),
         ('assistant', 'Assistant'),
     )
+    protect = models.BooleanField(
+        default=False, 
+        help_text='protection from removal anonymous user',
+    )
     name = models.CharField(max_length=225)
     surname = models.CharField(max_length=225)
     email = models.EmailField(default='example@gmail.com')
@@ -18,4 +22,4 @@ class Coach(models.Model):
         return "/coaches/%i/" % self.id
 
     def __unicode__(self):
-        return "%s %s %s" % (self.surname, self.name, self.status)
+        return "%s %s" % (self.surname, self.name)

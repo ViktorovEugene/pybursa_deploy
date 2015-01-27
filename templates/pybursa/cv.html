@@ -1,0 +1,18 @@
+{% extends "pybursa/base.html" %}
+{% load static %}
+
+{% block css %}{{ STATIC_URL }}cv.css{% endblock %}
+
+{% block class-active-cv %} class="active" {% endblock %}
+
+{% block content %}
+	<div class="container">
+		<a href="{% static 'img/CV_Vikrotov_Eugene.pdf' %}">
+			<h3>Download CV.pdf</h3>
+		</a>
+		<img class="mycv center-block" src="{% static 'img/cv.jpg' %}" alt="This is my CV">
+		<a href="{% static 'img/CV_Vikrotov_Eugene.pdf' %}">
+			<h3>Download CV.pdf</h3>
+		</a>
+	</div>
+{% endblock content %}

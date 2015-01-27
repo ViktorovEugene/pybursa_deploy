@@ -16,6 +16,7 @@ class Migration(migrations.Migration):
             name='Coach',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('protect', models.BooleanField(default=False, help_text=b'protection from removal anonymous user')),
                 ('name', models.CharField(max_length=225)),
                 ('surname', models.CharField(max_length=225)),
                 ('email', models.EmailField(default=b'example@gmail.com', max_length=75)),

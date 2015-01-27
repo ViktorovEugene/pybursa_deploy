@@ -2,6 +2,33 @@ from django.db import models
 import datetime
 
 
+class Group(models.Model):
+    name = models.CharField(max_length=30, null=True,
+        blank=True)
+    protect = models.BooleanField(
+        default=False,
+        help_text='protection from removal anonymous user',
+    )
+    start_date = models.DateField(default=datetime.date.today())
+    end_date = models.DateField(null=True, blank=True)
+    number_of_students = models.IntegerField(default=5)
+    course = models.ForeignKey('courses.Course', null=True)
+    
+    def __init__(self, *args, **kwargs):
+        super(Group, self).__init__(*args, **kwargs)
+        self.end_date = (self.start_date + datetime.timedelta(days=61))
+        try:
+            self.name = ('%s %s-%s' % (
+                        self.course.name,
+                        self.start_date.strftime('%Y %b'),
+                        self.end_date.strftime('%b'),
+                        ))
+        except AttributeError:
+            pass
+
+    def __unicode__(self):
+        return '%s' % (self.name)
+
 class Course(models.Model):
     TECNOLOGY_CHOISE = (
         ('python', 'Python'),
@@ -13,21 +40,17 @@ class Course(models.Model):
         'ruby': 'shiny_red_ruby.png',
         'javascript': 'java-logo-png.png',
     }
+    protect = models.BooleanField(
+        default=False,
+        help_text='protection from removal anonymous user',
+    )
     name = models.CharField(max_length=225)
     description= models.TextField()
-    coach = models.ForeignKey('coaches.Coach')
-    assistant = models.ForeignKey('coaches.Coach', blank=True, null=True,
+    coach = models.ForeignKey('coaches.Coach',  limit_choices_to={'status': 'coach'})
+    assistant = models.ForeignKey('coaches.Coach', limit_choices_to={'status': 'assistant'}, blank=True, null=True,
                                   related_name='course_assistant')
-    start_date = models.DateField(default=datetime.date.today())
-    end_date = models.DateField()
-    tecnology = models.CharField(max_length=11, choices=TECNOLOGY_CHOISE)
+    tecnology = models.CharField(max_length=11, choices=TECNOLOGY_CHOISE, default='')
     venue = models.ForeignKey('address.Address', related_name='course_venue')
-    slug = models.SlugField(blank=True)
-
-    def __init__(self, *args, **kwargs):
-        super(Course, self).__init__(*args, **kwargs)
-        print self.start_date
-        self.end_date = (self.start_date + datetime.timedelta(days=61))
 
     def get_img(self):
         tec = self.tecnology
@@ -38,3 +61,4 @@ class Course(models.Model):
 
     def __unicode__(self):
         return '%s (%s) - %s' % (self.name, self.coach, self.tecnology)
+

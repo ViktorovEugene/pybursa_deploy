@@ -1,23 +1,31 @@
 {% extends "courses/courses_base.html" %}
 {% load static %}
 
-{% block css %}{{ STATIC_URL }}courses/css/courses_item.css{% endblock %}
+{% block css %}{{ STATIC_URL }}courses_item.css{% endblock %}
 
 {% block content %}
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="{% url 'courses_list' %}">Все курсы<span class="sr-only">(current)</span></a></li>
+            <li><a href="{% url 'courses_list' %}">Все курсы<span class="sr-only">(current)</span></a></li>
+            <li><a href="{% url 'courses_new' %}">Создать курс</a></li>
           </ul>
           <ul class="nav nav-sidebar">
             <li><b>Текущий:</b></li>
             <li><a href="{% url 'courses_edit' course.id %}">Редактирвоать</a></li>
             <li><a href="{% url 'courses_delete' course.id %}">Удалить</a></li>
-            <li><a href="{% url 'courses_new' %}">Создать новый</a></li>
+            <li><a href="{% url 'group_new' %}">Создать группу</a></li>
+          </ul>
+          <ul class='nav nav-sidebar'>
+            <li><b>Группы:</b></li>
+            {% for group in course.group_set.all %}
+              <li><a href="{% url 'group_edit' group.id %}">{{ group.name }}</a></li>
+            {% endfor %}
           </ul>
           </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          {% block massage %} {{ block.super }} {% endblock massage %}
           <h1 class="page-header">{{ course.name }}</h1>
 
           <div class="row placeholders">
@@ -64,7 +72,13 @@
               <tbody>
             {% for student in course.student_set.all %}
                 <tr>
-                  <td>{{ student.group }}</td>
+                  <td>
+                    {% for group in student.group.all %}
+                      {% if course.name in group.name %} 
+                        {{ group.name }}
+                      {% endif %}
+                    {% endfor %}
+                  </td>
                   <td>{{ student.surname }}</td>
                   <td>{{ student.name }}</td>
                   <td>{{ student.package }}</td>

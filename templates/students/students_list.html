@@ -5,6 +5,7 @@
 
 {% block content %}
     <div class="container">
+        {% block massage %} {{ block.super }} {% endblock massage %}
         <h1>IT Bursa students list</h1>
         <a  href="{% url 'students_new' %}">
           <button class="btn btn-success" type="button">add student</button></a>
@@ -12,9 +13,9 @@
         <ul class="list-group">
             {% for student in students %}
             <li class="list-group-item" style="font-size: 18px">
+                {{ forloop.counter}}
                 <a href="{% url 'students_item' student.id %}">
                     {{ student.surname }} {{ student.name }} 
-                    {{ student.pk }}
                 </a>
                 <div class="btn-group pull-right">
                   <a  href="{% url 'students_edit' student.id %}">

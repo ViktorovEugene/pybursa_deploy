@@ -14,4 +14,5 @@ urlpatterns = patterns('',
     url(r'^coaches/', include('coaches.urls'), name='coaches'),
     url(r'^address/', include('address.urls'), name='address'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^cv/', TemplateView.as_view(template_name='pybursa/cv.html'), name='cv'),
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

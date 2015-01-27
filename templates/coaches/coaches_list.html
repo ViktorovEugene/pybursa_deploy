@@ -1,10 +1,11 @@
 {% extends "coaches/coaches_base.html" %}
 {% load static %}
 
-{% block css %}{{ STATIC_URL }}coaches/css/coaches_list.css{% endblock %}
+{% block css %}{{ STATIC_URL }}coaches_list.css{% endblock %}
 
 {% block content %}
     <div class="container">
+        {% block massage %} {{ block.super }} {% endblock massage %}
         <h1>IT Bursa coaches list</h1>
         <a  href="{% url 'coaches_new' %}">
           <button class="btn btn-success" type="button">add coach</button></a>
@@ -12,7 +13,7 @@
         <ul class="list-group">
             {% for coach in coaches %}
             <li  class="list-group-item" style="font-size: 18px">
-                {{coach.id}}
+                {{forloop.counter}}
                 <a href="{% url 'coaches_item' coach.id %}">
                   {{ coach.surname }} {{ coach.name }}</a>
 

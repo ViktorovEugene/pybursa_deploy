@@ -5,7 +5,8 @@
 
 {% block content %}
     <div class="container">
-        <h1>{{ title }}</h1>
+        {% block massage %} {{ block.super }} {% endblock massage %}
+        <h1>Editing of student</h1>
         <form method="post">
           {% csrf_token %}
             {{ form.as_p }}
@@ -13,6 +14,9 @@
             <input type='submit' class='btn btn-success' value="save"/>
             <a href=""<button type="button" class="btn btn-info">clean</button></a>
             <a href="{% url 'students_list' %}" class="btn btn-default">cancel</a>
+            {% if object %}
+            <a href="{% url 'students_delete' object.id %}" class="btn btn-warning">delete</a>
+            {% endif %}
           </div>
         </form>
     </div>

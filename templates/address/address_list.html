@@ -1,7 +1,7 @@
 {% extends "address/address_base.html" %}
 {% load static %}
 
-{% block css %}{{ STATIC_URL }}address/css/address_list.css{% endblock %}
+{% block css %}{{ STATIC_URL }}address_list.css{% endblock %}
 
 {% block content %}
     <div class="container">
@@ -9,8 +9,8 @@
         <ul class="list-group">
             {% for address in address %}
             <li class="list-group-item">
-                <a href="{% url 'address_item' address.id %}">
-                    {{ address.id }} 
+                {{ forloop.counter}}
+                <a href="{% url 'address_item' address.id %}"> 
                 {% if address.course_venue.all %}
                 {% for course in address.course_venue.all %}
                     {{ course.name }}

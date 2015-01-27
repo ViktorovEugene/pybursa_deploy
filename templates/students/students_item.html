@@ -5,7 +5,7 @@
 
 {% block content %}
     <div class="container">
-
+      {% block massage %} {{ block.super }} {% endblock massage %}
       <h1>Student: {{ student.surname }} {{ student.name }}</h1>
       <ul class="list-group">
         <li class="list-group-item">Email: {{ student.email }}</li>

@@ -1,10 +1,11 @@
 {% extends "coaches/coaches_base.html" %}
 {% load static %}
 
-{% block css %}{{ STATIC_URL }}coaches/css/coaches_item.css{% endblock %}
+{% block css %}{{ STATIC_URL }}coaches_item.css{% endblock %}
 
 {% block content %}
     <div class="container">
+      {% block massage %} {{ block.super }} {% endblock massage %}
       <h1>Coach: {{ coach.surname }} {{ coach.name }}</h1>
       <ul class="list-group">
         <li class="list-group-item">{{ coach.status }}</li>

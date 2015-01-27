@@ -1,2 +1,10 @@
 {% extends "pybursa/base.html" %}
 {% block class-active-coaches %} class="active" {% endblock %}
+{% block massage %}
+{% if messages %} {% for message in messages %}
+    <div class="alert alert-danger">
+      <a href="#" class="close pull-left" data-dismiss="alert">×</a>
+      <p style="margin-left: 20px;">{{ message }}</p>
+    </div>
+ {% endfor %} {% endif %}
+ {% endblock massage %}

@@ -12,11 +12,11 @@
     <link href="{% static "dist/css/bootstrap.min.css" %}" rel="stylesheet">
     
     <!-- Custom styles for common template -->
-    <link href="{% static "pybursa/css/common.css" %}" rel="stylesheet">
+    <link href="{% static "common.css" %}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href=
-      "{% block css %}{% static "pybursa/css/base.css" %}{% endblock css %}"
+      "{% block css %}{% static "base.css" %}{% endblock css %}"
     rel="stylesheet">
     
   </head>
@@ -36,10 +36,11 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li {% block class-active-students %}{% endblock %}><a href="{% url 'students_list' %}">Students</a></li>
             <li {% block class-active-courses %}{% endblock %}><a href="{% url 'courses_list' %}">Courses</a></li>
+            <li {% block class-active-students %}{% endblock %}><a href="{% url 'students_list' %}">Students</a></li>
             <li {% block class-active-coaches %}{% endblock %}><a href="{% url 'coaches_list' %}">Coaches</a></li>
             <li {% block class-active-address %}{% endblock %}><a href="{% url 'address_list' %}">Address</a></li>
+            <li {% block class-active-cv %}{% endblock %}><a href="{% url 'cv' %}">My CV</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -82,7 +83,7 @@
           <div class="container">
             <div class="carousel-caption">
                 <h1 class="java-h1">Душа компании</h1>
-                <p class="java-p">Мощный классический язык программирования, без которого плохо будет всем)</p>
+                <p class="java-p">Динамичный сценарный язык программирования, без которого интернет не будет таким, каким мы его знаем.</p>
                 <p><a class="btn btn-lg btn-primary" href="http://jsbursa.com" role="button">курсы</a></p>
             </div>
           </div>
@@ -104,7 +105,7 @@
     <div class="container">  
       <div class="blog-header">
         <h1 class="blog-title">Приветвую тебя, дорогой гость!</h1>
-        <p class="lead blog-description">Этот сайт прекрасная иллустрация того, чему может научитсья даже <b>самый ленивый</b> студент курсов <a href="https://www.facebook.com/pages/It-Bursa/1539330322946469?ref=stream&fref=nf">IT Bursa!</a></p>
+        <p class="lead blog-description">Этот сайт - прекрасная иллюстрация того, чему может научиться “чайник”,  закипавший на курсах <a href="https://www.facebook.com/pages/It-Bursa/1539330322946469?ref=stream&fref=nf">ITBursa</a>, всего 2 месяца!</p>
       </div>
       <!-- content -->
       <div class="row">
@@ -113,20 +114,21 @@
           <div class="blog-post">
             <h2 class="blog-post-title">Обо мне</h2>
             <p class="blog-post-meta">
-              "Я бывший бармен крупног ресторана, и мне пришлось уйти с работы и болше я не могу..."
+              "Я работал барменом крупного ресторана. Ушел с работы и больше я не хочу..."
             </p>
             <p>
-              Так могла бы начинаться моя речь на собрании анонимных алкоголиков. Как обычно, к внезапному увольнению сложно быть подготовленным. Нужно было-бы подкопить денег, подыскать альтернативу... Я этим не обременялся и, словно в сказеке, стал перед выбором:
+              Так могла бы начинаться моя речь на собрании анонимных алкоголиков. Но вы не подумайте, я всё-же хочу. Хочу зарабатывать, а не только работать. И хочу, чтобы работали на меня. Чтобы мой опыт работал на меня. 
+              В общем, спасибо друзьям! Я словно в сказке, стал перед выбором:
             </p>
             <blockquote>
-              -Прямо пойдешь - водки нальёшь. <br>-На лево пойдешь... - А вот не пойду, нет ни денег, ни даже девушки, от коророй было-бы можно.<br>-Ну тогда тебе направо! 
+              -Прямо пойдешь - водки нальёшь. <br>-На лево пойдешь... - А вот не пойду, нет ни денег, ни даже девушки, от коророй было-бы можно.<br>-Ну, тогда тебе направо! 
             </blockquote>
             <p>
-              Знакомая по университету предложила пойти на курсы. Тут-то я и свпомнил все советы товарища, подогретые легендами о достойных заработках программиста.
+              Друг меня уже давно пилил - “бросай работу”, а тут еще и подруга по университету позвала на курсы. О легендах достойных заработков, я уж и не говорю.
             </p>
             <hr>
             <p>
-              И так, что мы имеем - я прежде полный ноль в программировании - пишу свой сайт, спустья всего два месяца. Выводы делайте сами)
+              Итак, что мы имеем: я, прежде полный ноль в программировании, пишу свой сайт спустья, всего, два месяца. Выводы делайте сами)
             </p>
           </div>
           <!-- /.blog-post -->
@@ -136,11 +138,12 @@
           <div class="sidebar-module sidebar-module-inset">
             <h4>Что есть на сайте:</h4>
             <p>
-              Сайт иммитирует ресурс курсов по программированию. Здесь вы можете добавлять удалять и реддактировать курсы группы и конечно-же студентов.
+              Сайт иммитирует ресурс курсов по программированию. Здесь вы можете добавлять, удалять и редактировать курсы, группы и, конечно-же, студентов.
             </p>
-            <p style="color: red;">На данный момент это мой первый сайт и он ЕЩЕ находится на страдии разработки. Я прорабатываю логику приложений занимаюсь версткой. Думаю вы поймёте, где я еще "неприбрался". Могут быть даже опечатки :)</p>
+            <p style="color: red;">На данный момент это мой первый сайт и он ЕЩЕ находится на стадии разработки. Я прорабатываю логику приложений занимаюсь версткой. Думаю вы поймёте, где я еще "неприбрался". Могут даже быть опечатки :)</p>
           </div>
           <!-- /.sidebar-module-inset -->
+            <a href="{% url 'courses_list' %}" ><img class="play center-block" src="{% static 'img/play.png' %}" alt="CV(resume)"></a>
         </div>
         <!-- /.blog-sidebar -->
       </div>
@@ -151,9 +154,20 @@
   {% endblock content %}
     
     <footer class="blog-footer">
-      <p>
-        &copy; Created by <b>Viktorov Eugeny</b> <a href="https://vk.com/jeka_from_ua">@jeka_from_ua</a><b> · </b><em>Kharkov 2015</em>
-      </p>
+      <ul class="list-inline">
+        <li>&copy; Created by <b>Viktorov Eugeny</b> <a href="https://vk.com/jeka_from_ua">@jeka_from_ua</a><b> · </b><em>Kharkov 2015</em>
+        <li>
+        <li>
+          <a href="https://github.com/ViktorovEugene/pybursa_deploy">
+            <img class="git" src="{% static 'img/git.png' %}" alt="This is GitHub">
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'cv' %}">
+              <img class="cv" src="{% static 'img/resume_icon.png' %}" alt="CV(resume)"></li>
+          </a>
+        </li>
+      </ul>
       <p>
         <a href="#">Back to top</a>
       </p>

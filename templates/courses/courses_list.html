@@ -1,12 +1,13 @@
 {% extends "courses/courses_base.html" %}
 {% load static %}
 
-{% block css %}{{ STATIC_URL }}courses/css/courses_list.css{% endblock %}
+{% block css %}{{ STATIC_URL }}courses_list.css{% endblock %}
 
 {% block content %}
   <div class="container">
 
     <div class="container marketing">
+{% block massage %}{{ block.super }}{% endblock massage %}
       <div class="row row-offcanvas row-offcanvas-right">
         <div class="col-xs-12 col-sm-9">
           <p class="pull-right visible-xs">

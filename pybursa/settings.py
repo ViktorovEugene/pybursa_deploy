@@ -104,9 +104,12 @@ TEMPLATE_DIRS = (
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+# STATICFILES_DIRL designate dirctory to search static FileFinders
+STATICFILES_DIRS = []
+# define STATICFILES_DIRS by serch all "static" directory
+for dirpath, dirnames, filenames in os.walk(BASE_DIR):
+    if dirpath[-7:] == '/static':
+        STATICFILES_DIRS.append(dirpath)
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/

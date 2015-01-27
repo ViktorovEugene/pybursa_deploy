@@ -1,28 +1,7 @@
 /*
  * Globals
  */
-.blog-footer {
-  position: relative;
-}
 
-/*body {
-  padding-bottom: 30px;
-  padding-top: 50px;
-  color: #555;
-  background-color: #FFFAC6;
-}*/
-
-/*h1, .h1,
-h2, .h2,
-h3, .h3,
-h4, .h4,
-h5, .h5,
-h6, .h6 {
-  margin-top: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: normal;
-  color: #333;
-}*/
 /*
  * Override Bootstrap's default container.
  */
@@ -198,4 +177,9 @@ p.lead.blog-description {
 
 a {
     color: #34A98F;
+}
+
+img.play.center-block {
+    width: 100%;
+    max-width: 200px;
 }

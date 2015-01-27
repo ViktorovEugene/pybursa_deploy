@@ -1,23 +1,26 @@
-{% extends "coaches/coaches_base.html" %}
+{% extends "courses/courses_base.html" %}
 {% load static %}
 
-{% block css %}{{ STATIC_URL }}coaches_edit.css{% endblock %}
+{% block css %}{{ STATIC_URL }}group_edit.css{% endblock %}
+
 
 {% block content %}
     <div class="container">
         {% block massage %} {{ block.super }} {% endblock massage %}
-        <h1>Editing of coach</h1>
+        <h1>Editing group</h1>
         <form method="post">
           {% csrf_token %}
           <ul class="list-group">
-            {{ form.as_ul }}
+            {% for boundfield in form %}
+              <li class="list-group-item">{{ boundfield.name }} {{ boundfield }}</li>
+            {% endfor %}
           </ul>
           <div class="btn-group" role="group" aria-label="...">
             <input type='submit' class='btn btn-success' value="save"/>
             <a href=""<button type="button" class="btn btn-info">clean</button></a>
-            <a href="{% url 'coaches_list' %}" class="btn btn-default">cancel</a>
+            <a href="{% url 'courses_list' %}" class="btn btn-default">cancel</a>
             {% if object %}
-            <a href="{% url 'coaches_delete' object.id %}" class="btn btn-warning">delete</a>
+            <a href="{% url 'group_delete' object.id %}" class="btn btn-warning">delete</a>
             {% endif %}
           </div>
         </form>
