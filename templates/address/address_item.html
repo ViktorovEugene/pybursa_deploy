@@ -5,7 +5,14 @@
 
 {% block content %}
     <div class="container">
-      <h1>Address of {{ course }} </h1>
+      <h1>Address 
+        {% for course in address.course_venue.all %} 
+          {{ course.name }}
+          {% if not forloop.last %},
+          {% endif %}
+        {% endfor %}
+
+      </h1>
       <ul class="list-group">
         <li class="list-group-item">Country: {{ address.country }}</li>
         <li class="list-group-item">Index: {{ address.post_index}}</li>
@@ -14,6 +21,14 @@
         <li class="list-group-item">Street: {{ address.street }}</li>
         <li class="list-group-item">House: {{ address.house }}</li>
       </ul>
+      <div class="btn-group pull-left" >
+                  <a  href="{% url 'address_edit' address.id %}">
+                    <button class="btn btn-warning"  type="button">edit</button></a>
+                  <a  href="{% url 'address_delete' address.id %}">
+                    <button class="btn btn-danger" type="button">delete</button></a>
+                    <a  href="{% url 'address_new' %}">
+          <button class="btn btn-success" type="button">add address</button></a>
+      </div>  
     </div>
 {% endblock content %}
 

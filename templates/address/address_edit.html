@@ -1,0 +1,23 @@
+{% extends "address/address_base.html" %}
+{% load static %}
+
+{% block css %}{{ STATIC_URL }}students/css/students_edit.css{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% block massage %} {{ block.super }} {% endblock massage %}
+        <h1>Editing of address</h1>
+        <form method="post">
+          {% csrf_token %}
+            {{ form.as_p }}
+          <div class="btn-group" role="group" aria-label="...">
+            <input type='submit' class='btn btn-success' value="save"/>
+            <a href=""<button type="button" class="btn btn-info">clean</button></a>
+            <a href="{% url 'address_list' %}" class="btn btn-default">cancel</a>
+            {% if object %}
+            <a href="{% url 'address_delete' object.id %}" class="btn btn-warning">delete</a>
+            {% endif %}
+          </div>
+        </form>
+    </div>
+{% endblock content %}

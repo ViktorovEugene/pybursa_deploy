@@ -48,6 +48,18 @@ class GroupUpdateView(UpdateView):
 	template_name  = 'courses/group_edit.html'
 	form_class = GroupForm
 
+
+class GroupDetailView(DetailView):
+	model = Group
+	template_name = 'courses/group_detail.html'
+	context_object_name = 'group'
+
+	def get_context_data(self, **kwargs):
+  		context = super(GroupDetailView, self).get_context_data(**kwargs)
+  		context['students'] = self.get_object().student_set.all()
+  		return context
+
+
 class CourseEditForm(ModelForm):
 	class Meta:
 		model = Course
@@ -68,6 +80,7 @@ class CoursesDetailView(DetailView):
 	model = Course
 	template_name = 'courses/courses_item.html'
 	context_object_name = 'course'
+	
 	def get_context_data(self, **kwargs):
   		context = super(CoursesDetailView, self).get_context_data(**kwargs)
   		# context['course'] = u'; '.join(self.get_object().course_venue.values_list('name', 

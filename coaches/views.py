@@ -50,9 +50,17 @@ class CoachesDeleteView(DeleteView):
 	success_url = reverse_lazy('coaches_list')
 
 	def render_to_response(self, context, **response_kwargs):
+		if self.get_object().course_set.all() and self.get_object().status == 'coach':
+			course_tuple = tuple(course.name for course in self.get_object().course_set.all())
+			deny_reason = 'Sory, you can\'t delete this coach. He is teacing on "' + "\", \"".join(course_tuple) + "\"."
+			messages.info(self.request, deny_reason)
+			return redirect(self.request.META.get('HTTP_REFERER','/'))
+			
 		if self.get_object().protect:
 			messages.info(self.request, "Sory, you can't delete this object. It is protect by the administation.")
 			return redirect(self.request.META.get('HTTP_REFERER','/'))
+
+
 		return super(CoachesDeleteView, self).render_to_response(context, **response_kwargs)
 
 		

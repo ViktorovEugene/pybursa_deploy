@@ -6,16 +6,19 @@
 {% block content %}
     <div class="container">
         <h1>IT Bursa Adresses list</h1>
+        <a  href="{% url 'address_new' %}">
+          <button class="btn btn-success" type="button">add address</button></a>
         <ul class="list-group">
             {% for address in address %}
-            <li class="list-group-item">
-                {{ forloop.counter}}
-                <a href="{% url 'address_item' address.id %}"> 
-                {% if address.course_venue.all %}
-                {% for course in address.course_venue.all %}
-                    {{ course.name }}
-                {% endfor %}
-                {% endif %} </a>         
+            <li class="list-group-item" style='padding: 2px 0 15px 0'>
+                {{ forloop.counter }}
+                <a href="{% url 'address_item' address.id %}" style="margin-left: 20px">{{ address.street }} {{ address.house }}</a>
+                <div class="btn-group pull-right" >
+                  <a  href="{% url 'address_edit' address.id %}">
+                    <button class="btn btn-warning"  type="button">edit</button></a>
+                  <a  href="{% url 'address_delete' address.id %}">
+                    <button class="btn btn-danger" type="button">delete</button></a>
+                </div>         
             </li>
             {% endfor %}
         </ul>
