@@ -17,12 +17,12 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('protect', models.BooleanField(default=False, help_text=b'protection from removal anonymous user')),
-                ('name', models.CharField(max_length=225)),
-                ('surname', models.CharField(max_length=225)),
+                ('name', models.CharField(max_length=15)),
+                ('surname', models.CharField(max_length=15)),
                 ('email', models.EmailField(default=b'example@gmail.com', max_length=75)),
                 ('status', models.CharField(max_length=9, choices=[(b'coach', b'Coach'), (b'assistant', b'Assistant')])),
                 ('phone_number', models.CharField(default=b'+38000000000', max_length=15)),
-                ('user', models.ForeignKey(default=b'', blank=True, to=settings.AUTH_USER_MODEL)),
+                ('user', models.ForeignKey(default=b'', blank=True, to=settings.AUTH_USER_MODEL, null=True)),
             ],
             options={
             },

@@ -9,8 +9,8 @@ class Student(models.Model):
         ('gold', 'Glod'),
         ('platimun', 'Platinum'),
     )
-    name = models.CharField(max_length=225)
-    surname = models.CharField(max_length=225)
+    name = models.CharField(max_length=15)
+    surname = models.CharField(max_length=15)
     date_of_birth = models.DateField(blank=True, null=True)
     email = models.EmailField(default='example@mail.com')
     phone = models.CharField(max_length=15, blank=True)

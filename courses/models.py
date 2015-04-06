@@ -29,6 +29,10 @@ class Group(models.Model):
     def __unicode__(self):
         return '%s' % (self.name)
 
+    def get_absolute_url(self):
+        return "/courses/groups/%i/" % self.id
+
+
 class Course(models.Model):
     TECNOLOGY_CHOISE = (
         ('python', 'Python'),
@@ -38,19 +42,20 @@ class Course(models.Model):
     LABEL_IMG = {
         'python': 'python label.png',
         'ruby': 'shiny_red_ruby.png',
-        'javascript': 'java-logo-png.png',
+        'javascript': 'js.png',
     }
     protect = models.BooleanField(
         default=False,
         help_text='protection from removal anonymous user',
     )
-    name = models.CharField(max_length=225)
+    name = models.CharField(max_length=15)
     description= models.TextField()
     coach = models.ForeignKey('coaches.Coach',  limit_choices_to={'status': 'coach'})
     assistant = models.ForeignKey('coaches.Coach', limit_choices_to={'status': 'assistant'}, blank=True, null=True,
                                   related_name='course_assistant')
     tecnology = models.CharField(max_length=11, choices=TECNOLOGY_CHOISE, default='')
-    venue = models.ForeignKey('address.Address', related_name='course_venue')
+    venue = models.ForeignKey('address.Address', related_name='course_venue', null=True, blank=True, on_delete=models.SET_NULL,
+        default=None)
 
     def get_img(self):
         tec = self.tecnology

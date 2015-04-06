@@ -1,0 +1,31 @@
+{% extends "courses/courses_base.html" %}
+{% load static %}
+
+<!-- {% block css %}{{ STATIC_URL }}courses_item.css{% endblock %} -->
+
+{% block content %}
+    <div class="container">
+      {% block massage %} {{ block.super }} {% endblock massage %}
+      <h1>Gruop: {{ group.name }}</h1>
+	  <div class="btn-group pull-right">
+		  <a  href="{% url 'group_new' %}">
+          <button class="btn btn-success" type="button">add group</button></a>
+		  <a  href="{% url 'group_edit' group.id %}">
+		    <button class="btn btn-warning  " type="button">edit</button></a>
+		  <a  href="{% url 'group_delete' group.id %}">
+		    <button class="btn btn-danger" type="button">delete</button></a>
+	  </div>
+		  {% if students|length >= 1 %}
+			  <h2>enrolement of students:</h2>
+		      <ol class="list-group">
+		        {% for student in students %}
+		        	
+		        	<li class="list-group-item">{{ forloop.counter }} {{ student.name }}</li>
+		        {% endfor %}
+		        
+		      </ol>
+		  {% else %}
+		   		<h2>Here is no studens</h2>
+		  {% endif %} 		
+    </div>
+{% endblock content %}

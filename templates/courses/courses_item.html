@@ -20,7 +20,9 @@
           <ul class='nav nav-sidebar'>
             <li><b>Группы:</b></li>
             {% for group in course.group_set.all %}
-              <li><a href="{% url 'group_edit' group.id %}">{{ group.name }}</a></li>
+              <li><a href="{% url 'groups_item' group.id %}">{{ group.name }}</a></li>
+            {% empty %}
+              <li>без групп</li>
             {% endfor %}
           </ul>
           </div>
@@ -90,7 +92,7 @@
             </table>
           </div>
         {% else %}
-          <h3 class="sub-header">На этом курсе покачто нет студентов.</h3>
+          <h3 class="sub-header">На этом курсе еще нет студентов.</h3>
         {% endif %}
         </div>
       </div>
